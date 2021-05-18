@@ -30,7 +30,7 @@ class Main extends Component {
             const productCount = await marketplace.methods.productCount().call();
             this.setState({ marketplace, productCount });
 
-            for (let i=1; i<=this.state.productCount; i++) {
+            for (let i = 1; i <= this.state.productCount; i++) {
                 const product = await marketplace.methods.products(i).call();
                 this.setState({ products: [...this.state.products, product] });
             }
@@ -48,11 +48,12 @@ class Main extends Component {
 
     createProduct(name, price) {
         this.setState({ loading: true });
-        
+
         this.state.marketplace.methods.createProduct(name, price)
             .send({ from: this.state.account })
             .once('receipt', (receipt) => {
                 this.setState({ loading: false });
+                window.location.reload();
             });
     }
 
@@ -63,6 +64,7 @@ class Main extends Component {
             .send({ from: this.state.account, value: price })
             .once('receipt', (receipt) => {
                 this.setState({ loading: false });
+                window.location.reload();
             });
     }
 

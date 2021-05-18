@@ -22,7 +22,7 @@ A step by step series of examples that tell you how to get a development env run
 Get the code
 
 ```
-git clone https://github.com/dt6120/Marketplace-Dapp.git marketplace
+git clone https://github.com/Paul75/Marketplace-Dapp.git marketplace
 ```
 
 Install dependencies
