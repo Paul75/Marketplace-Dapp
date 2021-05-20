@@ -9,6 +9,7 @@ contract Marketplace {
     struct Product {
         uint256 id;
         string name;
+        string description;
         uint256 price;
         address payable owner;
         bool purchased;
@@ -17,6 +18,7 @@ contract Marketplace {
     event ProductCreated(
         uint256 id,
         string name,
+        string description,
         uint256 price,
         address payable owner,
         bool purchased
@@ -25,6 +27,7 @@ contract Marketplace {
     event ProductPurchased(
         uint256 id,
         string name,
+        string description,
         uint256 price,
         address payable seller,
         address buyer,
@@ -44,12 +47,13 @@ contract Marketplace {
         products[productCount] = Product(
             productCount,
             _name,
+            "",
             _price,
             msg.sender,
             false
         );
 
-        emit ProductCreated(productCount, _name, _price, msg.sender, false);
+        emit ProductCreated(productCount, _name, "", _price, msg.sender, false);
     }
 
     function purchaseProduct(uint256 _id) public payable {
@@ -71,6 +75,7 @@ contract Marketplace {
         emit ProductPurchased(
             _id,
             myProduct.name,
+            myProduct.description,
             myProduct.price,
             seller,
             myProduct.owner,

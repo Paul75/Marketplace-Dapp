@@ -6,7 +6,7 @@ const Products = (props) => {
         <div className="container border p-3 mt-3">
             <h2>Acheter des produits</h2>
             <hr />
-            <Table bordered hover variant="secondary">
+            <Table responsive striped bordered hover>
                 <thead>
                     <tr>
                         <th>#</th>

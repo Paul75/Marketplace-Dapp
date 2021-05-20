@@ -37,6 +37,7 @@ module.exports = {
 
   contracts_directory: './src/ethereum/contracts',
   contracts_build_directory: './src/ethereum/build',
+  // migrations_directory: './src/ethereum/migrations',
 
   networks: {
     // Useful for testing. The `development` name is special - truffle uses it by default

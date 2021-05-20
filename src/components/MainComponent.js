@@ -52,8 +52,9 @@ class Main extends Component {
         this.state.marketplace.methods.createProduct(name, price)
             .send({ from: this.state.account })
             .once('receipt', (receipt) => {
+                console.log('createProduct, receipt', receipt);
                 this.setState({ loading: false });
-                window.location.reload();
+                // window.location.reload();
             });
     }
 
@@ -63,6 +64,7 @@ class Main extends Component {
         this.state.marketplace.methods.purchaseProduct(id)
             .send({ from: this.state.account, value: price })
             .once('receipt', (receipt) => {
+                console.log('purchaseProduct, receipt', receipt);
                 this.setState({ loading: false });
                 window.location.reload();
             });
