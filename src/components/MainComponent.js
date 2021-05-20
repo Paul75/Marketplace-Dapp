@@ -47,26 +47,31 @@ class Main extends Component {
     }
 
     createProduct(name, price) {
-        this.setState({ loading: true });
+        // this.setState({ loading: true });
 
         this.state.marketplace.methods.createProduct(name, price)
             .send({ from: this.state.account })
-            .once('receipt', (receipt) => {
+            .once('receipt', async (receipt) => {
                 console.log('createProduct, receipt', receipt);
-                this.setState({ loading: false });
+                // this.setState({ loading: false });
                 // window.location.reload();
+                this.setState({ products: [] });
+                await this.loadBlockchainData();
             });
     }
 
     purchaseProduct(id, price) {
-        this.setState({ loading: true });
+        // this.setState({ loading: true });
 
         this.state.marketplace.methods.purchaseProduct(id)
             .send({ from: this.state.account, value: price })
-            .once('receipt', (receipt) => {
+            .once('receipt', async (receipt) => {
                 console.log('purchaseProduct, receipt', receipt);
-                this.setState({ loading: false });
-                window.location.reload();
+                // this.setState({ loading: false });
+                // window.location.reload();
+
+                this.setState({ products: [] });
+                await this.loadBlockchainData();
             });
     }
 
